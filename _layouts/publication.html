@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{%- comment -%}
+  One publication (files in _publications). The body of the file is the abstract.
+{%- endcomment -%}
+{%- assign type_label = site.data.publication_types[page.type] | default: page.type -%}
+{% include page-head.html kicker=type_label lead=page.authors %}
+<div class="wrap page-body prose">
+<dl class="meta-list">
+  <dt>Date</dt><dd>{{ page.date | date: "%B %Y" }}</dd>
+  {%- if page.series %}<dt>Series</dt><dd>{{ page.series }}</dd>{% endif %}
+  {%- if page.topics %}<dt>Topics</dt><dd>{% include topic-tags.html keys=page.topics %}</dd>{% endif %}
+</dl>
+{%- if page.summary %}
+<aside class="example" aria-label="Summary in plain words">
+  <p class="kicker">In plain words</p>
+  {{ page.summary | markdownify }}
+</aside>
+{%- endif %}
+{%- assign abstract = content | strip %}
+{%- if abstract != "" %}
+<h2 id="abstract">Abstract</h2>
+{{ content }}
+{%- endif %}
+{%- if page.pdf or page.doi or page.link or page.code %}
+<h2 id="read">Read and reuse</h2>
+<ul class="link-list">
+  {%- if page.pdf %}<li><a href="{{ page.pdf }}">Full text (PDF)</a></li>{% endif %}
+  {%- if page.doi %}<li><a href="https://doi.org/{{ page.doi }}">DOI: {{ page.doi }}</a></li>{% endif %}
+  {%- if page.link %}<li><a href="{{ page.link }}">Publisher's page</a></li>{% endif %}
+  {%- if page.code %}<li><a href="{{ page.code }}">Code and data</a></li>{% endif %}
+</ul>
+{%- endif %}
+<h2 id="cite">How to cite</h2>
+<p class="cite">{{ page.authors }} ({{ page.date | date: "%Y" }}). {{ page.title }}.{% if page.series %} {{ page.series }}.{% endif %}{% if page.doi %} https://doi.org/{{ page.doi }}{% endif %}</p>
+<p class="back-link"><a href="{{ '/publications/' | relative_url }}">All publications</a></p>
+</div>

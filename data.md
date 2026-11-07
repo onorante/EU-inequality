@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Data
+title: Data and tools
 icon: data
-intro: The indicators and datasets behind our work, with links to their sources. Estimates for EU countries and regions will be added here.
+intro: The indicators and datasets behind our work, with links to their sources. New measures for EU countries and regions, and the code that produces them, will be added here.
+
+# The text below the second line of dashes comes after the lists.
+body_position: after
 
 sections:
   - id: indicators
@@ -52,3 +55,19 @@ sections:
         url: https://ec.europa.eu/eurostat/web/gisco
         text: Maps and geographic data, including the NUTS regions used for regional statistics. Eurostat.
 ---
+## New measures
+
+New indicators of inequality produced by our research, for EU countries and regions, will be published here with documentation of how they are built. Each entry will state what it measures and which dimension of inequality it covers; its level of detail (households, municipalities, regions or countries); its coverage, frequency and period; the type of data it uses; and its access conditions.
+
+Interactive charts and maps, to explore inequality by dimension, country and region, will follow.
+
+## Code and models
+
+The code behind each paper is linked from the page of the paper, on the [Publications]({{ '/publications/' | relative_url }}) page. Models and tools developed in the research topics will be listed here as they become available.
+
+## Our approach to data
+
+- **Open where possible:** indicators are published openly; underlying data are shared when licences allow.
+- **Documented:** every indicator comes with a clear description of its sources and methods.
+- **Comparable:** measures are designed to be comparable across countries and over time.
+- **Private:** no personal data are published, only aggregated or anonymised results.

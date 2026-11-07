@@ -23,5 +23,44 @@ maintainer:
 
 repository_url: "https://github.com/onorante/EU-inequality"
 
+# Content that comes in many similar entries. Each entry is one file in the
+# folder of the same name (_topics, _publications, _events) and gets its own page.
+# Templates to copy are in the _templates folder.
+collections:
+  topics:
+    output: true
+    permalink: /topics/:name/
+  publications:
+    output: true
+    permalink: /publications/:name/
+  events:
+    output: true
+    permalink: /events/:name/
+
+# Show entries with a date in the future (upcoming events, forthcoming papers).
+# Without this, Jekyll would hide them until their date.
+future: true
+
+# Settings applied automatically to every entry of a collection.
+defaults:
+  - scope:
+      path: ""
+      type: topics
+    values:
+      layout: topic
+      parent: { title: Research topics, url: /topics/ }
+  - scope:
+      path: ""
+      type: publications
+    values:
+      layout: publication
+      parent: { title: Publications, url: /publications/ }
+  - scope:
+      path: ""
+      type: events
+    values:
+      layout: event
+      parent: { title: Events and seminars, url: /events/ }
+
 exclude:
   - README.md

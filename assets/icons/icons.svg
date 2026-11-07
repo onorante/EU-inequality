@@ -75,4 +75,28 @@
     <path d="M10 14 21 3" />
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
   </symbol>
+  <symbol id="dimensions" viewBox="0 0 24 24"><!-- lucide: layers -->
+    <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+    <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+    <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+  </symbol>
+  <symbol id="topics" viewBox="0 0 24 24"><!-- lucide: layout-grid -->
+    <rect width="7" height="7" x="3" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="14" rx="1" />
+    <rect width="7" height="7" x="3" y="14" rx="1" />
+  </symbol>
+  <symbol id="events" viewBox="0 0 24 24"><!-- lucide: calendar -->
+    <path d="M8 2v4" />
+    <path d="M16 2v4" />
+    <rect width="18" height="18" x="3" y="4" rx="2" />
+    <path d="M3 10h18" />
+  </symbol>
+  <symbol id="collaborate" viewBox="0 0 24 24"><!-- lucide: handshake -->
+    <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+    <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+    <path d="m21 3 1 11h-2" />
+    <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+    <path d="M3 4h8" />
+  </symbol>
 </svg>

@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{%- comment -%}
+  One event (files in _events). The body of the file is the description.
+{%- endcomment -%}
+{%- assign type_label = site.data.event_types[page.type] | default: "Event" -%}
+{% include page-head.html kicker=type_label lead=page.summary %}
+<div class="wrap page-body prose">
+<dl class="meta-list">
+  <dt>When</dt><dd>{% if page.when %}{{ page.when }}{% else %}{{ page.date | date: "%-d %B %Y" }}{% endif %}{% if page.time %}, {{ page.time }}{% endif %}</dd>
+  {%- if page.place %}<dt>Where</dt><dd>{{ page.place }}</dd>{% endif %}
+  {%- if page.format %}<dt>Format</dt><dd>{{ page.format }}</dd>{% endif %}
+  {%- if page.speakers %}<dt>Speakers</dt><dd>{{ page.speakers }}</dd>{% endif %}
+  {%- if page.status %}<dt>Status</dt><dd>{{ page.status }}</dd>{% endif %}
+  {%- if page.topics %}<dt>Topics</dt><dd>{% include topic-tags.html keys=page.topics %}</dd>{% endif %}
+</dl>
+{{ content }}
+{%- if page.register or page.slides or page.recording %}
+<ul class="link-list">
+  {%- if page.register %}<li><a href="{{ page.register }}">Register</a></li>{% endif %}
+  {%- if page.slides %}<li><a href="{{ page.slides }}">Slides</a></li>{% endif %}
+  {%- if page.recording %}<li><a href="{{ page.recording }}">Recording</a></li>{% endif %}
+</ul>
+{%- endif %}
+<p class="back-link"><a href="{{ '/events/' | relative_url }}">All events and seminars</a></p>
+</div>

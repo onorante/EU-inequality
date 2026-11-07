@@ -1,0 +1,13 @@
+{%- comment -%}
+  Links to the topic pages listed in a "topics" field.
+  Parameter: keys (the list of topic keys, e.g. page.topics).
+{%- endcomment -%}
+{%- if include.keys and include.keys.size > 0 -%}
+<ul class="tags">
+{%- for key in include.keys -%}
+{%- for t in site.topics -%}
+{%- if t.key == key %}<li><a class="tag" href="{{ t.url | relative_url }}">{{ t.short_title | default: t.title }}</a></li>{% endif -%}
+{%- endfor -%}
+{%- endfor -%}
+</ul>
+{%- endif -%}

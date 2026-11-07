@@ -1,12 +1,17 @@
 # Main menu, in the order shown on the site.
-# Link to a page ("/data/") or to a section of the home page ("/#measure").
-- title: What we measure
-  url: /#measure
-- title: How we measure it
-  url: /#methods
-- title: Data
-  url: /data/
-- title: Publications
-  url: /publications/
+# A menu item is highlighted on its own page and on the pages below it
+# (for example "Research topics" on every topic page).
+- title: Home
+  url: /
 - title: About
   url: /about/
+- title: Research topics
+  url: /topics/
+- title: Publications
+  url: /publications/
+- title: Data and tools
+  url: /data/
+- title: Events and seminars
+  url: /events/
+- title: Collaborate
+  url: /collaborate/

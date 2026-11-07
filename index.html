@@ -2,61 +2,28 @@
 layout: default
 scripts: [/assets/js/lorenz.js]
 
-# The three sections below the chart. Edit the text here; the look comes from the style sheet.
-# "icon" is the id of an icon in assets/icons/icons.svg. Add "url: /data/" to an item to make its title a link.
-sections:
-  - id: measure
-    title: What we measure
-    intro: Inequality is more than a single number. We look at the different ways people end up ahead or behind, and at how these gaps add up.
-    items:
-      - icon: income
-        title: Income
-        text: "Earnings, transfers and taxes: who gains and who loses from the way income is earned and redistributed."
-      - icon: wealth
-        title: Wealth
-        text: Housing, savings, pensions and debt. Wealth is far more concentrated than income, and harder to observe.
-      - icon: places
-        title: Places
-        text: Gaps between and within regions, down to the local level, and why some areas fall behind while others pull ahead.
-      - icon: childhood
-        title: Childhood
-        text: How the circumstances children grow up in shape their chances later in life.
-      - icon: climate
-        title: Consumption and climate
-        text: Whose footprint is largest, and who bears the cost of the green transition.
+# Home page text. Edit it here; the look comes from the style sheet.
+# Order of the page: chart, "Why it matters", research topics (built from the
+# files in _topics), latest events, publications and news (built automatically),
+# and the invitation to collaborate.
 
-  - id: methods
-    title: How we measure it
-    intro: Averages hide the people at the edges. Our methods follow whole distributions and how they change over time, across places and in response to policy.
-    items:
-      - icon: distributions
-        title: Distributional econometrics
-        text: Models of entire distributions rather than means, and of how they respond to economic shocks.
-      - icon: microdata
-        title: Household microdata
-        text: European surveys such as EU-SILC and the Household Finance and Consumption Survey, combined with administrative and new data sources.
-      - icon: households
-        title: Models with many households
-        text: Macroeconomic models in which households differ in income and wealth, to trace how monetary and fiscal policy reach each of them.
-      - icon: spatial
-        title: Spatial models
-        text: How geography shapes inequality, and how shocks spread across regional borders.
+why:
+  id: why
+  title: Why it matters
+  intro: Inequality is more than a single number, and the way we measure it shapes the policies we choose.
+  items:
+    - title: Averages hide people
+      text: European statistics describe the average household well. They say much less about who is falling behind, where and why. Two regions with the same average income can offer very different lives to the people who live there.
+    - title: Inequality is more than income
+      text: "Whether you own your home, how much it costs to heat it, how far you travel to see a doctor, how much free time you have and what opportunities exist where you live: all of these shape a life. Many are measured rarely, late or not at all."
+    - title: Policies reach people unequally
+      text: A change in interest rates, energy prices or public investment affects a young renter, a retired saver and a family with a mortgage in very different ways. Seeing these differences in time is a condition for fair and effective policy.
 
-  - id: more
-    title: More on this site
-    items:
-      - icon: data
-        title: Data
-        url: /data/
-        text: The indicators and datasets we use, with links to their sources.
-      - icon: publications
-        title: Publications
-        url: /publications/
-        text: Papers, policy briefs and the code behind them.
-      - icon: about
-        title: About
-        url: /about/
-        text: Who we are and how to get in touch.
+topics_title: Research topics
+topics_intro: We combine new data (administrative records, financial transactions, text and maps) with new methods (artificial intelligence, advanced statistics and economic models with many different households). The work is organised in five topics.
+
+cta_title: Work with us
+cta_text: Measuring inequality well needs data, ideas and questions from many places. If you are a researcher, hold relevant data or work on policies where inequality matters, we would like to hear from you.
 ---
 <section class="hero" aria-labelledby="title">
   <div class="wrap hero-inner">
@@ -104,5 +71,44 @@ sections:
   </div>
 </section>
 
-{% for section in page.sections %}{% include section.html section=section %}
-{% endfor %}
+{% include section.html section=page.why %}
+
+{% include topic-grid.html title=page.topics_title intro=page.topics_intro %}
+
+<section class="section" id="latest" aria-labelledby="latest-title">
+  <div class="wrap section-inner">
+    <div class="section-intro">
+      <h2 id="latest-title">Latest</h2>
+    </div>
+    <ul class="latest-grid">
+      <li class="latest-card">
+        <p class="kicker">Next event</p>
+        {% include event-list.html when="upcoming" limit=1 empty="Seminars and events will be announced here." %}
+        <p class="more"><a href="{{ '/events/' | relative_url }}">All events and seminars</a></p>
+      </li>
+      <li class="latest-card">
+        <p class="kicker">Latest publications</p>
+        {% include publication-list.html limit=3 empty="The first papers and policy briefs will appear here." %}
+        <p class="more"><a href="{{ '/publications/' | relative_url }}">All publications</a></p>
+      </li>
+      {%- capture news %}{% include news-list.html limit=3 %}{% endcapture %}
+      {%- assign news_check = news | strip %}
+      {%- if news_check != "" %}
+      <li class="latest-card">
+        <p class="kicker">News</p>
+        {{ news }}
+      </li>
+      {%- endif %}
+    </ul>
+  </div>
+</section>
+
+<section class="section cta" id="work-with-us" aria-labelledby="cta-title">
+  <div class="wrap section-inner">
+    <div class="section-intro">
+      <h2 id="cta-title">{{ page.cta_title }}</h2>
+      <p>{{ page.cta_text }}</p>
+      <a class="button" href="{{ '/collaborate/' | relative_url }}">Collaborate</a>
+    </div>
+  </div>
+</section>

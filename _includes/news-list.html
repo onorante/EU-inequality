@@ -1,0 +1,17 @@
+{%- comment -%}
+  News items from _data/news.yml, newest first. Shows nothing if there are none.
+  Optional parameter: limit (maximum number shown).
+{%- endcomment -%}
+{%- if site.data.news and site.data.news.size > 0 -%}
+{%- assign news = site.data.news | sort: "date" | reverse -%}
+<ul class="item-list">
+{%- for n in news -%}
+{%- if include.limit and forloop.index > include.limit -%}{%- break -%}{%- endif -%}
+<li class="item">
+<p class="item-meta"><span>{{ n.date | date: "%-d %B %Y" }}</span></p>
+<h3>{% if n.url %}<a href="{% if n.url contains '://' %}{{ n.url }}{% else %}{{ n.url | relative_url }}{% endif %}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}</h3>
+{%- if n.text %}<p>{{ n.text }}</p>{% endif %}
+</li>
+{%- endfor -%}
+</ul>
+{%- endif -%}

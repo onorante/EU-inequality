@@ -1,15 +1,17 @@
 ---
 layout: default
 ---
-<header class="page-head">
-  <div class="wrap">
-    {% if page.icon %}<span class="icon-tile icon-tile-large">{% include icon.html name=page.icon %}</span>{% endif %}
-    <h1>{{ page.title }}</h1>
-    {% if page.intro %}<p class="lead">{{ page.intro }}</p>{% endif %}
-  </div>
-</header>
-{% assign body = content | strip %}{% if body != "" %}<div class="wrap page-body prose">
+{%- comment -%}
+  Inner pages. Order: title block, topic tiles (if topic_grid: true), body text, item sections.
+  With body_position: after in the front matter, the body text comes after the item sections.
+{%- endcomment -%}
+{% include page-head.html %}
+{% if page.topic_grid %}{% include topic-grid.html title=page.topic_grid_title intro=page.topic_grid_intro %}{% endif %}
+{%- assign body = content | strip -%}
+{%- capture body_html -%}{%- if body != "" -%}<div class="page-body-outer"><div class="wrap page-body prose">
 {{ content }}
-</div>
-{% endif %}{% for section in page.sections %}{% include section.html section=section %}
+</div></div>{%- endif -%}{%- endcapture -%}
+{% unless page.body_position == "after" %}{{ body_html }}{% endunless %}
+{% for section in page.sections %}{% include section.html section=section %}
 {% endfor %}
+{% if page.body_position == "after" %}{{ body_html }}{% endif %}

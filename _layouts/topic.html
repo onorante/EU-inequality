@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{%- comment -%}
+  One research topic (files in _topics). Order: title block; "In short" with the example;
+  body text (why it matters, what we study, methods and data); who works on it;
+  results and related events, listed automatically from _publications and _events.
+{%- endcomment -%}
+{% include page-head.html lead=page.summary %}
+<section class="explainer" aria-labelledby="in-short">
+  <div class="wrap explainer-inner">
+    <div class="prose">
+      <h2 id="in-short">In short</h2>
+      {{ page.in_short | markdownify }}
+    </div>
+    {%- if page.example %}
+    <aside class="example" aria-label="Example">
+      <p class="kicker">{{ page.example.label | default: "A hypothetical example" }}</p>
+      <h3>{{ page.example.title }}</h3>
+      {{ page.example.text | markdownify }}
+    </aside>
+    {%- endif %}
+  </div>
+</section>
+<div class="wrap page-body prose">
+{{ content }}
+<h2 id="who-works-on-it">Who works on it</h2>
+{% if page.team %}{{ page.team | markdownify }}{% else %}<p>Contributors to this topic will be listed here as the work starts.</p>{% endif %}
+<h2 id="results">Results</h2>
+{% include publication-list.html topic=page.key empty="Papers, policy briefs and data on this topic will be listed here as they become available." %}
+{%- capture related -%}{% include event-list.html topic=page.key hide_empty=true %}{%- endcapture -%}
+{%- assign related_check = related | strip -%}
+{%- if related_check != "" %}
+<h2 id="events">Related events</h2>
+{{ related }}
+{%- endif %}
+<p class="back-link"><a href="{{ '/topics/' | relative_url }}">All research topics</a></p>
+</div>

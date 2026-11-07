@@ -1,0 +1,37 @@
+---
+layout: page
+title: Events and seminars
+icon: events
+intro: Seminars, workshops and courses on how to measure and understand inequality, in person and online.
+---
+{%- comment -%}
+  The lists are built from the files in the _events folder (see _templates/event.md)
+  and, for news, from _data/news.yml. Whether an event is upcoming or past is
+  decided when the site is rebuilt, that is after every change to the repository.
+{%- endcomment -%}
+<h2 id="seminars">Seminar series</h2>
+<p>A regular series presenting new research on how to measure and understand inequality. Each session will feature a presentation of recent work followed by discussion, and will be open to researchers, policy analysts, students and anyone interested, in person and online. Slides and, where available, recordings will be published after each session.</p>
+{% include event-list.html type="seminar" when="upcoming" empty="The programme will be announced here." %}
+<p>To propose a talk, see <a href="{{ '/collaborate/' | relative_url }}">Collaborate</a>.</p>
+
+<h2 id="flagship">Events of the Preparatory Action</h2>
+<p>Three events bring together policymakers and researchers: a launch, an academic workshop and a closing event. Dates and programmes will be confirmed here.</p>
+{% include event-list.html type="flagship" %}
+
+<h2 id="courses">Workshops and courses</h2>
+<p>Courses on new methods to measure and analyse inequality, in person and online, for researchers and analysts in public institutions. Dates and content will be announced here.</p>
+{% include event-list.html when="upcoming" exclude="seminar flagship" hide_empty=true %}
+{%- capture past %}{% include event-list.html when="past" exclude="flagship" hide_empty=true %}{% endcapture %}
+{%- assign past_check = past | strip %}
+{%- if past_check != "" %}
+
+<h2 id="past">Past seminars and events</h2>
+{{ past }}
+{%- endif %}
+{%- capture news %}{% include news-list.html %}{% endcapture %}
+{%- assign news_check = news | strip %}
+{%- if news_check != "" %}
+
+<h2 id="news">News</h2>
+{{ news }}
+{%- endif %}

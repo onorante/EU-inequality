@@ -1,0 +1,29 @@
+---
+layout: page
+title: Publications
+icon: publications
+intro: Papers, policy briefs and the code behind them. Every publication is open access.
+scripts: [/assets/js/filter.js]
+---
+{%- comment -%}
+  The list is built from the files in the _publications folder.
+  To add a publication, see _templates/publication.md.
+{%- endcomment -%}
+{% include publication-list.html filters=true empty="No publications listed yet. The first papers and policy briefs are expected in 2027." %}
+
+<h2 id="types">Types of publication</h2>
+<ul>
+  <li><strong>Policy briefs:</strong> short, non-technical summaries of a result and of what it means for policy. The best starting point for non-specialists.</li>
+  <li><strong>Working papers:</strong> full research papers, before or alongside publication in scientific journals.</li>
+  <li><strong>Technical reports:</strong> detailed documentation of methods and data.</li>
+  <li><strong>Handbook chapters:</strong> chapters of the handbook <em>New methodologies for assessing inequalities</em>.</li>
+  <li><strong>Data notes:</strong> descriptions of new datasets and indicators.</li>
+  <li><strong>Presentations:</strong> slides from seminars and events.</li>
+</ul>
+<p>Each publication has its own page, with a summary in plain words, the abstract, links to the full text and to the code, and a suggested citation.</p>
+
+<h2 id="handbook">Handbook</h2>
+<p>A handbook, <em>New methodologies for assessing inequalities</em>, will bring together the main results: new data and measurement approaches, the links between inequality and economic and social outcomes, and recommendations for policy. It is expected in 2028; its chapters will be listed here.</p>
+
+<h2 id="code">Code</h2>
+<p>The code behind each paper is linked from the page of the paper. The code of this website is on <a href="{{ site.repository_url }}">GitHub</a>.</p>

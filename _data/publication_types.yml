@@ -1,0 +1,8 @@
+# Types of publication. The key on the left goes in the "type" field of a
+# publication; the label on the right is what the site shows.
+policy-brief: Policy brief
+working-paper: Working paper
+technical-report: Technical report
+handbook-chapter: Handbook chapter
+data-note: Data note
+presentation: Presentation

@@ -3,8 +3,17 @@
     <a class="brand" href="{{ '/' | relative_url }}">{% include logo.html %}<span>{{ site.title }}</span></a>
     <nav class="site-nav" aria-label="Main">
       <ul>
-        {% for item in site.data.navigation %}<li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
-        {% endfor %}
+        {%- for item in site.data.navigation %}
+        {%- assign current = "" %}
+        {%- if page.url == item.url %}
+        {%- assign current = "page" %}
+        {%- elsif item.url != "/" %}
+        {%- assign len = item.url | size %}
+        {%- assign start = page.url | slice: 0, len %}
+        {%- if start == item.url %}{% assign current = "true" %}{% endif %}
+        {%- endif %}
+        <li><a href="{{ item.url | relative_url }}"{% if current != "" %} aria-current="{{ current }}"{% endif %}>{{ item.title }}</a></li>
+        {%- endfor %}
       </ul>
     </nav>
   </div>

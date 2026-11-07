@@ -1,0 +1,26 @@
+{%- comment -%}
+  The research topics as a grid of tiles, built from the files in _topics.
+  Parameters: title (required), intro (optional).
+{%- endcomment -%}
+{%- assign topics = site.topics | sort: "order" -%}
+<section class="section" id="topics" aria-labelledby="topics-title">
+  <div class="wrap section-inner">
+    <div class="section-intro">
+      <h2 id="topics-title">{{ include.title }}</h2>
+      {%- if include.intro %}
+      <p>{{ include.intro }}</p>
+      {%- endif %}
+    </div>
+    <ul class="entries">
+      {%- for t in topics %}
+      <li class="entry">
+        <span class="icon-tile">{% include icon.html name=t.icon %}</span>
+        <div class="entry-text">
+          <h3><a href="{{ t.url | relative_url }}">{{ t.short_title | default: t.title }}</a></h3>
+          <p>{{ t.summary }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+{%- comment -%}
+  List of events from _events.
+  Optional parameters:
+    when        upcoming | past (default: all). Decided when the site is rebuilt,
+                that is after every change to the repository.
+    type        only events of this type (seminar, flagship, workshop, course, other)
+    exclude     leave out these types, separated by spaces (e.g. "seminar flagship")
+    topic       only events with this topic key
+    limit       maximum number shown
+    empty       text shown when there is nothing to list
+    hide_empty  true to show nothing at all when there is nothing to list
+{%- endcomment -%}
+{%- assign today = site.time | date: "%Y%m%d" | plus: 0 -%}
+{%- assign evs = site.events | sort: "date" -%}
+{%- if include.when == "past" -%}{%- assign evs = evs | reverse -%}{%- endif -%}
+{%- assign excluded = include.exclude | split: " " -%}
+{%- assign shown = 0 -%}
+{%- capture items -%}
+{%- for e in evs -%}
+{%- assign d = e.date | date: "%Y%m%d" | plus: 0 -%}
+{%- assign ok = true -%}
+{%- if include.when == "upcoming" and d < today -%}{%- assign ok = false -%}{%- endif -%}
+{%- if include.when == "past" and d >= today -%}{%- assign ok = false -%}{%- endif -%}
+{%- if include.type and e.type != include.type -%}{%- assign ok = false -%}{%- endif -%}
+{%- if excluded contains e.type -%}{%- assign ok = false -%}{%- endif -%}
+{%- if include.topic -%}{%- unless e.topics contains include.topic -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}
+{%- if include.limit and shown >= include.limit -%}{%- assign ok = false -%}{%- endif -%}
+{%- if ok -%}
+{%- assign shown = shown | plus: 1 -%}
+{%- assign type_label = site.data.event_types[e.type] | default: "Event" -%}
+<li class="item">
+<p class="item-meta"><span class="tag tag-plain">{{ type_label }}</span><span>{% if e.when %}{{ e.when }}{% else %}{{ e.date | date: "%-d %B %Y" }}{% endif %}</span>{% if e.place %}<span>{{ e.place }}</span>{% endif %}</p>
+<h3><a href="{{ e.url | relative_url }}">{{ e.title }}</a></h3>
+{%- if e.summary %}<p>{{ e.summary }}</p>{% endif %}
+{%- if e.status %}<p class="item-status">{{ e.status }}</p>{% endif %}
+</li>
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+<ul class="item-list">{{ items }}</ul>
+{%- elsif include.hide_empty != true -%}
+<p class="empty">{{ include.empty | default: "No events listed at the moment." }}</p>
+{%- endif -%}

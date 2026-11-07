@@ -1,0 +1,7 @@
+# Types of event. The key on the left goes in the "type" field of an event;
+# the label on the right is what the site shows.
+seminar: Seminar
+flagship: Flagship event
+workshop: Workshop
+course: Course
+other: Event

@@ -1,0 +1,38 @@
+{%- comment -%}
+  List of publications from _publications, newest first.
+  Optional parameters:
+    topic   only publications with this topic key
+    limit   maximum number shown
+    filters true to show the topic and type selectors (Publications page)
+    empty   text shown when there is nothing to list
+{%- endcomment -%}
+{%- assign pubs = site.publications | sort: "date" | reverse -%}
+{%- assign shown = 0 -%}
+{%- capture items -%}
+{%- for p in pubs -%}
+{%- assign ok = true -%}
+{%- if include.topic -%}{%- unless p.topics contains include.topic -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}
+{%- if include.limit and shown >= include.limit -%}{%- assign ok = false -%}{%- endif -%}
+{%- if ok -%}
+{%- assign shown = shown | plus: 1 -%}
+{%- assign type_label = site.data.publication_types[p.type] | default: p.type -%}
+<li class="item" data-type="{{ p.type }}" data-topics="{{ p.topics | join: ' ' }}">
+<p class="item-meta">{% if type_label %}<span class="tag tag-plain">{{ type_label }}</span>{% endif %}<span>{{ p.date | date: "%B %Y" }}</span></p>
+<h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+{%- if p.authors %}<p class="item-authors">{{ p.authors }}</p>{% endif %}
+</li>
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+{%- if include.filters -%}
+<form class="filters" data-filter-for="publication-list" aria-label="Filter publications">
+<label>Topic<select data-filter="topics"><option value="">All topics</option>{% assign ts = site.topics | sort: "order" %}{% for t in ts %}<option value="{{ t.key }}">{{ t.short_title | default: t.title }}</option>{% endfor %}</select></label>
+<label>Type<select data-filter="type"><option value="">All types</option>{% for t in site.data.publication_types %}<option value="{{ t[0] }}">{{ t[1] }}</option>{% endfor %}</select></label>
+</form>
+<p class="empty" data-filter-empty hidden>No publications match this selection.</p>
+{%- endif -%}
+<ul class="item-list" id="publication-list">{{ items }}</ul>
+{%- else -%}
+<p class="empty">{{ include.empty | default: "No publications listed yet." }}</p>
+{%- endif -%}

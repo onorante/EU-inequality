@@ -1,0 +1,9 @@
+# Short news items, shown on the home page and on the Events and seminars page.
+# Newest first is not required: the site sorts them by date.
+# To add an item, copy the four lines below, remove the "# " at the start of
+# each line and fill them in. "url" is optional (a page of this site or a full web address).
+#
+# - date: 2027-01-15
+#   title: Title of the news item
+#   text: One or two sentences.
+#   url: /events/launch-2027/
