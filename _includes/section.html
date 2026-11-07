@@ -1,0 +1,18 @@
+{% assign s = include.section %}<section class="section" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+  <div class="wrap section-inner">
+    <div class="section-intro">
+      <h2 id="{{ s.id }}-title">{{ s.title }}</h2>
+      {% if s.intro %}<p>{{ s.intro }}</p>{% endif %}
+    </div>
+    <ul class="entries">
+      {% for item in s.items %}<li class="entry">
+        {% if item.icon %}<span class="icon-tile">{% include icon.html name=item.icon %}</span>{% endif %}
+        <div class="entry-text">
+          <h3>{% if item.url %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+          <p>{{ item.text }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

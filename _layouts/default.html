@@ -1,0 +1,16 @@
+<!doctype html>
+{% assign lo = page.layout_options %}<html lang="{{ site.lang }}" data-scheme="{{ lo.color_scheme | default: site.layout_options.color_scheme }}">
+<head>
+{% include head.html %}
+</head>
+<body class="width-{{ lo.width | default: site.layout_options.width }} header-{{ lo.header | default: site.layout_options.header }} sections-{{ lo.sections | default: site.layout_options.sections }}">
+<a class="skip-link" href="#main">Skip to content</a>
+{% include header.html %}
+<main id="main">
+{{ content }}
+</main>
+{% include footer.html %}
+{% for script in page.scripts %}<script src="{{ script | relative_url }}" defer></script>
+{% endfor %}
+</body>
+</html>

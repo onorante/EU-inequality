@@ -1,0 +1,52 @@
+---
+layout: page
+title: Style guide
+intro: The colours, type, icons and building blocks used across this site. This page is not in the menu; it is a reference for editing the site.
+noindex: true
+colors:
+  - { token: --color-text, name: Text }
+  - { token: --color-text-soft, name: Secondary text }
+  - { token: --color-accent, name: Accent }
+  - { token: --color-accent-strong, name: Accent, hover }
+  - { token: --color-accent-soft, name: Accent, soft }
+  - { token: --color-neutral, name: Neutral }
+  - { token: --color-line, name: Lines }
+  - { token: --color-band, name: Light band }
+  - { token: --color-bg, name: Background }
+icons: [income, wealth, places, childhood, climate, distributions, microdata, households, spatial, data, publications, about, mail, external]
+---
+<h2>Colours</h2>
+<p>Set at the top of <code>assets/css/main.css</code>.</p>
+<ul class="sg-swatches wide">
+  {% for c in page.colors %}<li><span class="sg-swatch" style="background: var({{ c.token }})"></span><strong>{{ c.name }}</strong><code>{{ c.token }}</code></li>
+  {% endfor %}
+</ul>
+
+<h2>Type</h2>
+<p>One family, Source Sans 3, in three weights: regular for text, semibold for headings and bold for emphasis.</p>
+<div class="sg-type wide">
+  <p class="sg-h1">Heading 1: How unequal is Europe?</p>
+  <p class="sg-h2">Heading 2: What we measure</p>
+  <p class="sg-h3">Heading 3: Household microdata</p>
+  <p class="lead">Lead paragraph: a short introduction under a page title.</p>
+  <p>Body text: European surveys such as EU-SILC and the Household Finance and Consumption Survey, combined with administrative and new data sources. <a href="#">A link looks like this.</a></p>
+</div>
+
+<h2>Icons</h2>
+<p>All icons live in <code>assets/icons/icons.svg</code>. Use one in a page with <code>{% raw %}{% include icon.html name="income" %}{% endraw %}</code>.</p>
+<ul class="sg-icons wide">
+  {% for name in page.icons %}<li><span class="icon-tile">{% include icon.html name=name %}</span><code>{{ name }}</code></li>
+  {% endfor %}
+</ul>
+
+<h2>Layout options</h2>
+<p>Set once in <code>_config.yml</code> under <code>layout_options</code>, or for a single page under <code>layout_options</code> in its front matter.</p>
+<table class="wide">
+  <thead><tr><th>Option</th><th>Values</th><th>What it changes</th></tr></thead>
+  <tbody>
+    <tr><td><code>width</code></td><td>narrow, standard, wide</td><td>Maximum width of every page</td></tr>
+    <tr><td><code>header</code></td><td>inline, centered</td><td>Logo and menu side by side, or centred one above the other</td></tr>
+    <tr><td><code>sections</code></td><td>split, stacked</td><td>Section title beside its items, or above them with items in a grid</td></tr>
+    <tr><td><code>color_scheme</code></td><td>light, auto</td><td>Always white, or dark when the visitor's device is in dark mode</td></tr>
+  </tbody>
+</table>

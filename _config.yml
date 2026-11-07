@@ -1,0 +1,27 @@
+# Site settings. GitHub Pages rebuilds the site automatically after every change.
+
+title: EU Inequality
+description: Research on how income, wealth and opportunity are distributed across the people and regions of the European Union, and on better ways to measure it.
+lang: en
+url: "https://onorante.github.io"
+baseurl: "/EU-inequality"
+permalink: pretty        # pages are published as /name/ instead of /name.html
+
+# Layout of the whole site. Change one word and every page follows.
+# A single page can override any of them in its own front matter, e.g.
+#   layout_options:
+#     width: wide
+layout_options:
+  width: standard       # narrow | standard | wide
+  header: inline        # inline (logo left, menu right) | centered (logo and menu centred)
+  sections: split       # split (title left, items right) | stacked (title on top, items in a grid)
+  color_scheme: light   # light (always white) | auto (follows the visitor's dark-mode setting)
+
+maintainer:
+  name: Luca Onorante
+  url: "https://onorante.github.io/"
+
+repository_url: "https://github.com/onorante/EU-inequality"
+
+exclude:
+  - README.md
