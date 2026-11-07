@@ -4,6 +4,7 @@ short_title: Beyond averages
 key: beyond-averages
 order: 2
 icon: distributions
+figure: figures/same-average.html      # diagram shown after the example (file in _includes)
 summary: Methods that follow the poorest, the middle and the richest at the same time, and make the best use of imperfect data.
 
 in_short: |

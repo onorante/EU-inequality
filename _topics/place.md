@@ -4,6 +4,7 @@ short_title: Place, opportunity and social ties
 key: place
 order: 5
 icon: places
+figure: figures/place-cycle.html      # diagram shown after the example (file in _includes)
 summary: How local conditions, trust and meeting places shape opportunities, and what happens when they disappear.
 
 in_short: |

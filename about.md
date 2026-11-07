@@ -3,6 +3,23 @@ layout: page
 title: About
 icon: about
 intro: What this site is, why this work matters and how it is organised.
+
+# Timeline of the Preparatory Action, shown as a diagram. Move "current: true"
+# to the phase in progress.
+timeline:
+  - when: "2026"
+    what: Preparatory Action approved; research teams selected through an open call
+    current: true
+  - when: February 2027
+    what: Launch event, Brussels
+  - when: "2027"
+    what: Research phase; seminars and courses
+  - when: Autumn 2027
+    what: Academic workshop
+  - when: Spring 2028
+    what: Closing event and presentation of results
+  - when: "2028"
+    what: Handbook
 ---
 ## About this site
 
@@ -38,14 +55,9 @@ Research teams from universities and research institutes, selected through an op
 - three events bringing together policymakers and researchers: a launch, an academic workshop and a closing event;
 - seminars and courses, in person and online, on new methods to measure inequality.
 
-| When | What |
-|---|---|
-| 2026 | Preparatory Action approved; research teams selected through an open call |
-| February 2027 | Launch event, Brussels |
-| 2027 | Research phase; seminars and courses |
-| Autumn 2027 | Academic workshop |
-| Spring 2028 | Closing event and presentation of results |
-| 2028 | Handbook |
+### Timeline
+
+{% include timeline.html items=page.timeline %}
 
 This website is not the official website of the Preparatory Action, of the European Parliament or of the European Commission.
 

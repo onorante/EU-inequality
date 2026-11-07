@@ -1,0 +1,10 @@
+{%- comment -%}
+  Timeline. Parameter: items, a list with "when", "what" and optionally
+  "current: true" for the present phase (see the front matter of about.md).
+  Used inside Markdown: keep it free of blank lines.
+{%- endcomment -%}
+<ol class="timeline wide">
+{%- for t in include.items %}
+  <li class="tl-item{% if t.current %} is-current{% endif %}"><span class="tl-when">{{ t.when }}</span><span class="tl-what">{{ t.what }}</span>{% if t.current %}<span class="tl-now">Now</span>{% endif %}</li>
+{%- endfor %}
+</ol>

@@ -4,6 +4,7 @@ short_title: Beyond income
 key: beyond-income
 order: 1
 icon: dimensions
+figure: figures/same-income.html      # diagram shown after the example (file in _includes)
 summary: Housing, health, education, energy, services, time and place. What living standards look like when we measure more than income.
 
 in_short: |

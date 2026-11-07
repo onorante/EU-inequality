@@ -4,6 +4,7 @@ short_title: Wealth and household finances
 key: wealth
 order: 3
 icon: wealth
+figure: figures/wealth-balance.html      # diagram shown after the example (file in _includes)
 summary: What households own and owe, how wealth is built and passed on, and how to measure it at the top, where surveys see least.
 
 in_short: |

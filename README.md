@@ -43,6 +43,18 @@ Add an entry to `_data/news.yml` (the file contains an example to copy). News it
 
 Each topic is a file in `_topics`. The front matter holds the title, the short title, the one-sentence summary used in the tiles, the "In short" explainer and the example; the text below the second line of dashes holds "Why it matters for Europe", "What we study" and "Methods and data". The lists of results and related events are added automatically. To add a topic, copy `_templates/topic.md`. Publications and events refer to topics by their `key`: `beyond-income`, `beyond-averages`, `wealth`, `economy`, `place`.
 
+Each topic can show one diagram after its example, set by the `figure` field (a file in `_includes/figures`). The diagrams are built with HTML and the site's colours, so they follow any change of palette:
+
+| Topic | Diagram | File |
+|---|---|---|
+| Beyond income | Anna and Marco, row by row | `same-income.html` |
+| Beyond averages | Two distributions with the same average (illustrative) | `same-average.html` |
+| Wealth and household finances | What makes up wealth (schematic) | `wealth-balance.html` |
+| Inequality and the economy | One interest rate decision, many effects | `rate-flow.html` |
+| Place, opportunity and social ties | How a place can empty slowly | `place-cycle.html` |
+
+The Research topics page shows how the topics fit together (`_includes/figures/topic-flow.html`). The timeline on the About page is set in the front matter of `about.md`; move `current: true` to the phase in progress.
+
 Files whose name starts with `_` (such as everything in `_templates`) are never published.
 
 ## Where things are

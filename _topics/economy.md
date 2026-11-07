@@ -4,6 +4,7 @@ short_title: Inequality and the economy
 key: economy
 order: 4
 icon: households
+figure: figures/rate-flow.html      # diagram shown after the example (file in _includes)
 summary: Economic models with many different households, to understand who gains and who loses from monetary and fiscal policy.
 
 in_short: |
