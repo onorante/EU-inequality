@@ -5,10 +5,10 @@
       {% if s.intro %}<p>{{ s.intro }}</p>{% endif %}
     </div>
     <ul class="entries">
-      {% for item in s.items %}<li class="entry">
+      {% for item in s.items %}<li class="entry{% unless item.icon %} entry-no-icon{% endunless %}">
         {% if item.icon %}<span class="icon-tile">{% include icon.html name=item.icon %}</span>{% endif %}
         <div class="entry-text">
-          <h3>{% if item.url %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+          <h3>{% if item.url %}{% if item.url contains '://' %}<a href="{{ item.url }}">{{ item.title }}{% include icon.html name="external" class="icon-inline" %}</a>{% else %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% endif %}{% else %}{{ item.title }}{% endif %}</h3>
           <p>{{ item.text }}</p>
         </div>
       </li>

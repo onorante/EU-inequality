@@ -53,6 +53,17 @@ Text in Markdown.
 
 It will be published at `/data/`. Add it to the menu in `_data/navigation.yml`.
 
+A page can also show lists of items in the same style as the home page (see `data.md`): add `sections` to its front matter, each with an `id`, a `title`, an optional `intro` and a list of `items` (`title`, `text`, and optionally `icon` and `url`).
+
+| Page | File |
+|---|---|
+| Home | `index.html` |
+| Data | `data.md` |
+| Publications | `publications.md` |
+| About | `about.md` |
+| Page not found | `404.html` |
+| Style guide (not in the menu) | `styleguide.html` |
+
 ## Change an icon
 
 Each icon in `assets/icons/icons.svg` is a `<symbol>` with an id such as `income`. Replace the shapes inside it with those of any 24×24 outline icon (for example from https://lucide.dev, the set used now) and keep the id. Every place that uses the icon changes with it. To add an icon, add a new `<symbol>` with a new id.

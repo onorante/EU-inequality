@@ -13,8 +13,8 @@ permalink: pretty        # pages are published as /name/ instead of /name.html
 #     width: wide
 layout_options:
   width: standard       # narrow | standard | wide
-  header: inline        # inline (logo left, menu right) | centered (logo and menu centred)
-  sections: split       # split (title left, items right) | stacked (title on top, items in a grid)
+  header: centered      # inline (logo left, menu right) | centered (logo and menu centred)
+  sections: stacked     # split (title left, items right) | stacked (title on top, items in a grid)
   color_scheme: light   # light (always white) | auto (follows the visitor's dark-mode setting)
 
 maintainer:

@@ -8,6 +8,8 @@ layout: default
     {% if page.intro %}<p class="lead">{{ page.intro }}</p>{% endif %}
   </div>
 </header>
-<div class="wrap page-body prose">
+{% assign body = content | strip %}{% if body != "" %}<div class="wrap page-body prose">
 {{ content }}
 </div>
+{% endif %}{% for section in page.sections %}{% include section.html section=section %}
+{% endfor %}

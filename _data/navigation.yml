@@ -1,8 +1,12 @@
 # Main menu, in the order shown on the site.
-# Link to a page once it exists ("/data/"), or to a section of the home page ("/#measure").
+# Link to a page ("/data/") or to a section of the home page ("/#measure").
 - title: What we measure
   url: /#measure
 - title: How we measure it
   url: /#methods
-- title: Coming next
-  url: /#next
+- title: Data
+  url: /data/
+- title: Publications
+  url: /publications/
+- title: About
+  url: /about/
